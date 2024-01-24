@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.logo {
+  display: flex;
+
+  &Container {
+    display: flex;
+    color: $color-black;
+  }
+}
+
+.navContainer {
+  display: flex;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.navListItemLink {
+  text-decoration: none;
+  color: $color-black;
+  transition: all ease-in-out 250ms;
+  
+  &:hover {
+    color: $color-primary;
+  }
+}
