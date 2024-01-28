@@ -2,10 +2,10 @@ import React from "react";
 import NextTopLoader from 'nextjs-toploader';
 import '@/theme-styles/global.scss';
 import type {Metadata} from "next";
-import {Inter} from "next/font/google";
+import {Manrope} from "next/font/google";
 import Navigation from "@/components/navigation";
 
-const inter = Inter({subsets: ["latin"]});
+const inter = Manrope({subsets: ["latin", "greek"]});
 
 export const metadata: Metadata = {
     title: "vSpot - All about Volos",
@@ -17,7 +17,7 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
         <html lang="el">
         <body className={inter.className}>
         <NextTopLoader
-            color="#f5406d"
+            color="#4c9aff"
             initialPosition={0.08}
             crawlSpeed={200}
             height={3}

@@ -1,0 +1,37 @@
+.btn {
+  cursor: pointer;
+  box-shadow: none;
+  padding: $gap-x-small $gap-small;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  transition: all ease-in-out $duration;
+}
+
+.primary {
+  background-color: $color-primary;
+  color: #fff;
+
+  &:hover {
+    background-color: darken($color-primary, $darken-amount);
+  }
+}
+
+.danger {
+  background-color: $color-red;
+  color: #fff;
+
+  &:hover {
+    background-color: darken($color-red, $darken-amount);
+  }
+}
+
+.secondary {
+  background-color: #fff;
+  color: $color-primary;
+  border-color: $color-primary;
+
+  &:hover {
+    background-color: $color-primary;
+    color: #fff;
+  }
+}

@@ -1,3 +1,59 @@
 .main {
-  padding: 1.5rem 0;
+  margin-top: 90px;
+}
+
+.heroContainer {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+
+.heroContent {
+  width: 45%;
+
+  h1 {
+    font-size: $text-large;
+    font-weight: 500;
+    margin: 0 0 $gap-medium;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-xx-small;
+    padding-left: $gap-small;
+    border-left: 5px solid $color-primary;
+  }
+
+  p {
+    font-size: $text-medium;
+    font-weight: 500;
+
+
+    &:not(:last-child) {
+      margin: 0 0 $gap-small;
+    }
+  }
+}
+
+.heroGallery {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $gap-small;
+  align-items: flex-end;
+}
+
+.heroImageContainer {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 10px;
+
+  &:first-child {
+    height: 500px;
+  }
+
+  &:last-child {
+    grid-column: 1 / span 2;
+    height: 280px;
+    margin-left: 25%;
+  }
 }

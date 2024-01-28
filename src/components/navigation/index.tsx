@@ -1,32 +1,13 @@
 import React from 'react';
 import {fetchMenuItems, fetchThemeOptions} from "@/services/wordpress";
-import styles from './navigation.module.scss';
-import Image from "next/image";
-import Link from "next/link";
-import {MenuItem} from "@/lib/interfaces/menu";
+import NavigationClient from './client'; // Client-side component
 
-const Navigation = async () => {
+export const Navigation = async () => {
+    // Server-side fetch operations
     const options = await fetchThemeOptions();
-    const menuItems: MenuItem[] = await fetchMenuItems('header-menu');
+    const menuItems = await fetchMenuItems('header-menu');
 
-    return (
-        <header className={`${styles.container} container container--md`}>
-            <div className={styles.logoContainer}>
-                <Link href={'/'} className={styles.logo}>
-                    <Image src={options.header_logo.url} alt={options.header_logo.alt} width={50} height={50}/>
-                </Link>
-            </div>
-            <nav className={styles.navContainer}>
-                <ul className={styles.navList}>
-                    {menuItems.map(menuItem =>
-                        <li key={menuItem.ID} className={styles.navListItem}>
-                            <Link href={menuItem.url} className={styles.navListItemLink}>{menuItem.title}</Link>
-                        </li>
-                    )}
-                </ul>
-            </nav>
-        </header>
-    );
+    return <NavigationClient options={options} menuItems={menuItems}/>;
 };
 
 export default Navigation;

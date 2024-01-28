@@ -1,2 +1,24 @@
-$color-primary: #f5406d;
-$color-black: #555;
+/** Colors **/
+$color-primary: #4C9AFF;
+//$color-primary: #5B7CFF;
+//$color-primary: #EE3662;
+$color-black: #11151c;
+$color-dark-gray: #777;
+$color-gray: #999;
+$color-light-gray: #efefef;
+$color-red: #f34a4a;
+$darken-amount: 12;
+/** Font sizes **/
+$text-small: 0.825rem;
+$text-medium: 1rem;
+$text-large: 3rem;
+$text-x-large: 5rem;
+/** Gaps **/
+$gap-xx-small: .5rem;
+$gap-x-small: .825rem;
+$gap-small: 1.25rem;
+$gap-medium: 2rem;
+$gap-large: 3rem;
+$gap-x-large: 5rem;
+/** Animations **/
+$duration: 250ms;

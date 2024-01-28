@@ -1,8 +1,12 @@
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  transition: all ease-in-out $duration;
+  padding: $gap-small 0;
+  border: 1px solid transparent;
 }
 
 .logo {
@@ -21,15 +25,27 @@
 .navList {
   display: flex;
   list-style: none;
-  gap: 1.5rem;
+  gap: $gap-large;
 }
 
 .navListItemLink {
   text-decoration: none;
   color: $color-black;
   transition: all ease-in-out 250ms;
-  
+
   &:hover {
     color: $color-primary;
   }
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerScrolled {
+  background-color: #fff;
+  padding: $gap-xx-small 0;
+  border-color: $color-light-gray;
 }

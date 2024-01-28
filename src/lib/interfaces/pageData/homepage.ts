@@ -1,6 +1,8 @@
 export interface HeroSection {
     title: string;
     text: string;
+    image: Image
+    gallery: Image[]
 }
 
 export interface PageData {

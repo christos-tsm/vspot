@@ -2,3 +2,12 @@
   max-width: 700px;
   margin: 0 auto;
 }
+
+.searchForm {
+  display: flex;
+  gap: $gap-small;
+  margin-top: $gap-small;
+  min-width: 760px;
+  position: relative;
+  z-index: 2;
+}

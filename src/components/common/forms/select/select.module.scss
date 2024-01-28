@@ -1,0 +1,72 @@
+.container {
+  flex: 1;
+  position: relative;
+}
+
+.dropdownInput {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  align-items: center;
+  position: relative;
+  padding: $gap-x-small;
+  border: 1px solid $color-light-gray;
+  border-radius: 5px;
+  gap: $gap-small;
+  transition: all ease-in-out $duration;
+  background: #fff;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+}
+
+.dropdownInputActive {
+  border-color: $color-primary;
+}
+
+.dropdownSelectedValue {
+}
+
+.placeholder {
+}
+
+.dropdownMenu {
+  position: absolute;
+  width: 100%;
+  border: 1px solid $color-light-gray;
+  border-radius: 5px;
+  padding: $gap-x-small 0 0;
+  background: #fff;
+}
+
+.searchBox {
+  width: 100%;
+  padding: 0 $gap-xx-small;
+  margin: 0 0 $gap-xx-small;
+
+  input {
+    width: 100%;
+
+    &:focus {
+      border-color: lighten($color-primary, 10);
+    }
+  }
+}
+
+.dropdownMenuItem {
+  padding: $gap-xx-small;
+  transition: all ease-in-out $duration;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lighten($color-primary, 10);
+    color: #fff;
+  }
+}
+
+.dropdownMenuItemSelected {
+  background-color: lighten($color-primary, 10);
+  color: #fff;
+  cursor: default;
+}

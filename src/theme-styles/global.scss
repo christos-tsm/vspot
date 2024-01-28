@@ -5,7 +5,19 @@
 }
 
 body {
-  color: #555;
+  color: $color-black;
+  background-image: url(/images/bg.svg);
+  background-size: 70%;
+  background-position: center;
+  background-repeat: repeat-y;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.25;
+}
+
+p, a, li {
+  line-height: 1.6;
 }
 
 .container {
@@ -14,5 +26,24 @@ body {
 
   &--md {
     max-width: 1340px;
+  }
+}
+
+.color-primary {
+  color: $color-primary;
+}
+
+input,
+textarea {
+  padding: $gap-xx-small;
+  outline: none;
+  border: 1px solid $color-light-gray;
+  border-radius: 5px;
+  transition: all ease-in-out $duration;
+  background: #fff;
+
+  &:hover,
+  &:focus {
+    border-color: $color-primary;
   }
 }
