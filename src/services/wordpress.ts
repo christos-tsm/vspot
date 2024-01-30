@@ -25,3 +25,8 @@ export const fetchPagesData = async (pageId: number) => {
     const response = await wpApi.get(`/wp/v2/page/${pageId}`);
     return response.data;
 }
+
+export const fetchPostTypeData = async (post_id: number, post_type: string) => {
+    const response = await wpApi.get(`/wp/v2/${post_type}/${post_id}`);
+    return response.data;
+}

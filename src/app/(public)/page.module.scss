@@ -57,3 +57,20 @@
     margin-left: 25%;
   }
 }
+
+.destinationsContainer {
+  margin: $gap-x-large auto;
+}
+
+.destinationsContent {
+  text-align: center;
+  max-width: 70%;
+  margin: 0 auto;
+  margin-bottom: $gap-x-large;
+
+  & > div {
+    p:not(:last-child) {
+      margin: $gap-small 0;
+    }
+  }
+}

@@ -1,10 +1,14 @@
 import Posts from "@/components/posts";
-import {fetchPagesData} from "@/services/wordpress";
-import styles from './page.module.scss';
-import {pagesIds} from "@/lib/pages/page-ids";
 import Image from "next/image";
+import styles from './page.module.scss';
+import {fetchPagesData} from "@/services/wordpress";
+import {pagesIds} from "@/lib/pages/page-ids";
+import {InterfaceImage} from "@/lib/interfaces/global";
 import SearchForm from "@/components/forms/search";
 import Categories from "@/components/categories";
+import PostCard from "@/components/common/cards/postCard";
+import {IPost} from "@/lib/interfaces/pageData/homepage";
+import CardsGrid from "@/components/common/cards/cardsGrid";
 
 export default async function Home() {
     const pageData = await fetchPagesData(pagesIds.homepage.id);
@@ -16,12 +20,12 @@ export default async function Home() {
                     <h1 dangerouslySetInnerHTML={{__html: pageData.acf.hero_section.title}}></h1>
                     <div dangerouslySetInnerHTML={{__html: pageData.acf.hero_section.text}}/>
                     <SearchForm/>
-                    <Categories/>
+                    <Categories categories={pageData.acf.categories}/>
                 </div>
                 {heroSectionGallery &&
                     <div className={styles.heroGallery}>
-                        {heroSectionGallery.map((image: Image, index: number) =>
-                            <div key={image.id} className={`${styles.heroImageContainer} heroImage-${image.id}`}>
+                        {heroSectionGallery.map((image: InterfaceImage, index: number) =>
+                            <div key={image.id} className={`${styles.heroImageContainer} heroImage-${image}`}>
                                 <Image fill
                                        priority={index === 0}
                                        src={image.sizes.large}
@@ -33,8 +37,22 @@ export default async function Home() {
                     </div>
                 }
             </section>
-
             {/*<Posts/>*/}
+            <section className={`${styles.destinationsContainer} container container--lg`}>
+                <div className={styles.destinationsContent}>
+                    <h1 className={`sectionTitle`}>{pageData.acf.locations.title}</h1>
+                    <div dangerouslySetInnerHTML={{__html: pageData.acf.locations.text}}/>
+                </div>
+                {pageData.acf.locations.destinations &&
+                    <CardsGrid columns={5}>
+                        {
+                            pageData.acf.locations.destinations.map((destination: IPost) =>
+                                <PostCard key={destination.ID} post={destination}/>
+                            )
+                        }
+                    </CardsGrid>
+                }
+            </section>
         </main>
     );
 }

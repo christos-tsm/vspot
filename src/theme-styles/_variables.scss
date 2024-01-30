@@ -1,7 +1,6 @@
 /** Colors **/
 $color-primary: #4C9AFF;
-//$color-primary: #5B7CFF;
-//$color-primary: #EE3662;
+$color-secondary: #FFB14C;
 $color-black: #11151c;
 $color-dark-gray: #777;
 $color-gray: #999;
@@ -21,4 +20,6 @@ $gap-medium: 2rem;
 $gap-large: 3rem;
 $gap-x-large: 5rem;
 /** Animations **/
-$duration: 250ms;
+$duration: 350ms;
+/** Box Shadow **/
+$shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);

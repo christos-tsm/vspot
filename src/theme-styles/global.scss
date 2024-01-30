@@ -14,6 +14,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.25;
+  font-weight: 500;
 }
 
 p, a, li {
@@ -26,6 +27,10 @@ p, a, li {
 
   &--md {
     max-width: 1340px;
+  }
+
+  &--lg {
+    max-width: 1670px;
   }
 }
 
@@ -46,4 +51,55 @@ textarea {
   &:focus {
     border-color: $color-primary;
   }
+}
+
+.cta {
+  transition: all ease-in-out $duration;
+  display: inline-flex;
+  position: relative;
+  text-decoration: none;
+  color: $color-primary;
+  font-weight: 600;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    transition: all ease-in-out $duration;
+  }
+
+  &--primary {
+    color: $color-primary;
+
+    &::before {
+      background-color: $color-primary;
+    }
+
+    &:hover::before {
+      width: 100%;
+    }
+  }
+
+  &--secondary {
+    color: $color-secondary;
+
+    &::before {
+      background-color: $color-secondary;
+    }
+
+    &:hover::before {
+      width: 100%;
+    }
+  }
+}
+
+.sectionTitle {
+  font-size: $text-large;
+}
+
+.sectionSubTitle {
+  font-size: $text-medium;
 }

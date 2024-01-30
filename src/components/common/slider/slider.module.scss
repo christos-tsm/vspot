@@ -4,7 +4,8 @@
   position: relative;
   user-select: none; // Prevent text selection
   -webkit-user-drag: none; // Prevent element dragging
-  
+  padding: 0 0 $gap-x-small;
+
   .slidesContainer {
     display: flex;
     transition: transform 0.5s ease-out;
@@ -37,4 +38,64 @@
       }
     }
   }
+}
+
+.leftArrow,
+.rightArrow {
+  position: absolute;
+  top: calc(50% - $gap-small);
+  transform: translateY(calc(50% - $gap-small));
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  background-color: #fff;
+  z-index: 1;
+  box-shadow: $shadow;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transition: all ease-in-out $duration;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+
+  svg {
+    path {
+      transition: all ease-in-out 250ms;
+    }
+  }
+
+  &:hover {
+    svg {
+      path {
+        fill: $color-primary;
+      }
+    }
+  }
+}
+
+.leftArrow {
+  left: 0;
+}
+
+.rightArrow {
+  right: 0;
+
+}
+
+.horizontalFade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(122, 122, 122, 0) 50%, rgba(255, 255, 255, 1) 100%);
 }

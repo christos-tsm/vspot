@@ -1,0 +1,67 @@
+.postCard {
+  background-color: #fff;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+  min-height: 350px;
+
+  img {
+    transition: all ease-in-out $duration;
+    object-fit: cover;
+  }
+
+  &:hover {
+    .postCardImageContainer {
+      img {
+        transform: scale(1.05);
+      }
+    }
+
+    .postCardTitle {
+      color: $color-primary;
+    }
+  }
+}
+
+.postURL {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.postCardImageContainer {
+  overflow: hidden;
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(122, 122, 122, 0) 50%);
+    z-index: 2;
+    pointer-events: none;
+  }
+}
+
+.postCardTitle {
+  transition: all ease-in-out $duration;
+  padding: $gap-x-small $gap-x-small 0;
+  position: absolute;
+  font-weight: 500;
+  z-index: 3;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: $text-medium;
+}

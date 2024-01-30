@@ -16,22 +16,21 @@
   }
 }
 
+
+.secondary {
+  background-color: $color-secondary;
+  color: #fff;
+
+  &:hover {
+    background-color: darken($color-secondary, $darken-amount);
+  }
+}
+
 .danger {
   background-color: $color-red;
   color: #fff;
 
   &:hover {
     background-color: darken($color-red, $darken-amount);
-  }
-}
-
-.secondary {
-  background-color: #fff;
-  color: $color-primary;
-  border-color: $color-primary;
-
-  &:hover {
-    background-color: $color-primary;
-    color: #fff;
   }
 }

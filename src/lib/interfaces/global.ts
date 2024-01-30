@@ -1,4 +1,4 @@
-interface Image {
+export interface InterfaceImage {
     ID: number,
     id: number,
     title: string,
@@ -15,4 +15,17 @@ interface Image {
         medium_large: string,
         large: string,
     }
+}
+
+export interface InterfaceIcon {
+    id: number;
+    title: string;
+    filename: string;
+    filesize: number;
+    url: string;
+}
+
+export interface InterfaceLink {
+    title: string;
+    url: string;
 }

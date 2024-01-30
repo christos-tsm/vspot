@@ -1,7 +1,10 @@
 'use client';
 
 import React, {useState, useEffect, useRef} from 'react';
+import Image from "next/image";
 import styles from './slider.module.scss';
+import ArrowLeft from "@/components/icons/ArrowLeft";
+import ArrowRight from "@/components/icons/ArrowRight";
 
 type SliderProps = {
     children: React.ReactNode;
@@ -9,14 +12,16 @@ type SliderProps = {
     autoplaySpeed?: number; // in milliseconds, set to 0 to disable autoplay
     showArrows?: boolean;
     showDots?: boolean;
+    horizontalFade?: boolean;
 };
 
 const Slider: React.FC<SliderProps> = ({
                                            children,
                                            slidesPerView,
                                            autoplaySpeed = 3000,
-                                           showArrows = true,
-                                           showDots = true,
+                                           showArrows = false,
+                                           showDots = false,
+                                           horizontalFade = false
                                        }) => {
     const [current, setCurrent] = useState(0);
     const totalSlides = React.Children.count(children);
@@ -84,10 +89,15 @@ const Slider: React.FC<SliderProps> = ({
 
     return (
         <section className={styles.slider}>
+            {horizontalFade && <div className={styles.horizontalFade}></div>}
             {showArrows && (
                 <>
-                    <button className={styles.leftArrow} onClick={handlePrevSlide}>&#10094;</button>
-                    <button className={styles.rightArrow} onClick={handleNextSlide}>&#10095;</button>
+                    <button className={styles.leftArrow} onClick={handlePrevSlide}>
+                        <ArrowLeft/>
+                    </button>
+                    <button className={styles.rightArrow} onClick={handleNextSlide}>
+                        <ArrowRight/>
+                    </button>
                 </>
             )}
             <div
