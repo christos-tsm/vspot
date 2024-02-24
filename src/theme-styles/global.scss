@@ -12,13 +12,28 @@ body {
   background-repeat: repeat-y;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.25;
   font-weight: 500;
 }
 
-p, a, li {
+p,
+a,
+li {
   line-height: 1.6;
+  font-size: $text-medium;
+}
+
+p,
+a {
+  &:not(:last-child) {
+    margin: $gap-small 0;
+  }
 }
 
 .container {
@@ -94,10 +109,29 @@ textarea {
       width: 100%;
     }
   }
+
+  &--fill {
+    background-color: $color-primary;
+    color: #fff;
+    padding: $gap-x-small $gap-small;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    transition: all ease-in-out $duration;
+
+    &.cta--primary {
+      &:hover {
+        background-color: darken($color-primary, $darken-amount);
+      }
+    }
+
+    &::before {
+      content: none;
+    }
+  }
 }
 
 .sectionTitle {
-  font-size: $text-large;
+  font-size: $text-m-large;
 }
 
 .sectionSubTitle {

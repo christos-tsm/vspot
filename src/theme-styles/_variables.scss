@@ -1,16 +1,18 @@
 /** Colors **/
-$color-primary: #4C9AFF;
-$color-secondary: #FFB14C;
-$color-black: #11151c;
+$color-primary: #615DFA;
+$color-primary-dark: #4542b9;
+$color-secondary: #3AC6F9;
+$color-black: #3E3F5E;
 $color-dark-gray: #777;
 $color-gray: #999;
 $color-light-gray: #efefef;
 $color-red: #f34a4a;
-$darken-amount: 12;
+$darken-amount: 8;
 /** Font sizes **/
 $text-small: 0.825rem;
 $text-medium: 1rem;
-$text-large: 3rem;
+$text-m-large: 2rem;
+$text-large: 2.5rem;
 $text-x-large: 5rem;
 /** Gaps **/
 $gap-xx-small: .5rem;
@@ -20,6 +22,9 @@ $gap-medium: 2rem;
 $gap-large: 3rem;
 $gap-x-large: 5rem;
 /** Animations **/
-$duration: 350ms;
+$duration: 650ms;
+$duration-fast: 250ms;
+$animation: cubic-bezier(0.77, 0, 0.18, 1);
 /** Box Shadow **/
 $shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+$shadow-none: 0px 10px 15px -3px rgba(0, 0, 0, 0);

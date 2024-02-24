@@ -12,7 +12,7 @@
   color: #fff;
 
   &:hover {
-    background-color: darken($color-primary, $darken-amount);
+    background-color: $color-primary-dark;
   }
 }
 

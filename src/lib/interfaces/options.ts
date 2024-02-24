@@ -21,7 +21,6 @@ export interface ImageSizes {
 
 export interface HeaderLogo {
     ID: number;
-    id: number;
     title: string;
     filename: string;
     filesize: number;
@@ -48,4 +47,5 @@ export interface HeaderLogo {
 
 export interface Options {
     header_logo: HeaderLogo;
+    header_logo_scrolled: HeaderLogo;
 }

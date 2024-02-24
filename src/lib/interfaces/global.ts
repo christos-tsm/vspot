@@ -1,6 +1,5 @@
-export interface InterfaceImage {
+export interface IImage {
     ID: number,
-    id: number,
     title: string,
     filename: string,
     filesize: number,
@@ -17,7 +16,7 @@ export interface InterfaceImage {
     }
 }
 
-export interface InterfaceIcon {
+export interface IIcon {
     id: number;
     title: string;
     filename: string;
@@ -25,7 +24,7 @@ export interface InterfaceIcon {
     url: string;
 }
 
-export interface InterfaceLink {
+export interface ILink {
     title: string;
     url: string;
 }

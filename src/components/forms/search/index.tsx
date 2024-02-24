@@ -1,6 +1,6 @@
 'use client';
 
-import {useState} from "react";
+import { useState } from "react";
 import styles from '../forms.module.scss';
 import Select from "@/components/common/forms/select";
 import Button from "@/components/common/forms/button";
@@ -9,7 +9,6 @@ type Options = {
     label: string,
     value: string | number
 }[]
-
 
 const SearchForm = () => {
     const [options, setOptions] = useState<Options>([
@@ -61,7 +60,7 @@ const SearchForm = () => {
                 isSearchable
                 isMulti={false}
             />
-            <Button variation={'primary'} text={'Αναζήτηση'}/>
+            <Button variation={'secondary'} text={'Αναζήτηση'} />
         </div>
     );
 };

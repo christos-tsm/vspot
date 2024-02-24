@@ -15,6 +15,7 @@
 
   &:hover {
     border-color: $color-primary;
+    box-shadow: $shadow-none;
 
     .cta::before {
       width: 100%;

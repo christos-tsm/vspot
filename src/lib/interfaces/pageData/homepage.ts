@@ -1,16 +1,24 @@
-import {InterfaceIcon, InterfaceImage, InterfaceLink} from "@/lib/interfaces/global";
+import {IIcon, IImage, ILink} from "@/lib/interfaces/global";
 
 export interface IHeroSection {
     title: string;
     text: string;
-    image: InterfaceImage;
-    gallery: InterfaceImage[];
+    image: IImage;
+    gallery: IImage[];
 }
 
-export interface ICategories {
-    icon: InterfaceIcon;
+export interface IConnect {
     title: string;
-    link: InterfaceLink;
+    text: string;
+    image: IImage;
+    link: ILink;
+}
+
+
+export interface ICategories {
+    icon: IIcon;
+    title: string;
+    link: ILink;
 }
 
 export interface IPost {
@@ -28,11 +36,26 @@ export interface ILocations {
     destinations: IPost[];
 }
 
-export interface PageData {
+export interface IRestaurants {
+    title: string;
+    text: string;
+    restaurants: IPost[];
+}
+
+export interface IHotels {
+    title: string;
+    text: string;
+    hotels: IPost[];
+}
+
+export interface IPageData {
     title: string;
     acf: {
         hero_section: IHeroSection;
         categories: ICategories[];
+        featured_restaurants: IRestaurants;
+        featured_hotels: IHotels;
         locations: ILocations;
+        connect: IConnect;
     };
 }

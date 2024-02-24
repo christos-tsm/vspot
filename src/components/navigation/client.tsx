@@ -1,18 +1,20 @@
 'use client'
 
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import styles from './navigation.module.scss';
-import {MenuItem} from "@/lib/interfaces/menu";
-import {Options} from "@/lib/interfaces/options";
+import { MenuItem } from "@/lib/interfaces/menu";
+import { Options } from "@/lib/interfaces/options";
+import { usePathname } from 'next/navigation';
 
-const NavigationClient = ({options, menuItems}: { options: Options, menuItems: MenuItem[] }) => {
+const NavigationClient = ({ options, menuItems }: { options: Options, menuItems: MenuItem[] }) => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const pathname = usePathname();
 
     useEffect(() => {
         const handleScroll = () => {
-            const threshold = 50; // Set your threshold
+            const threshold = 50;
             setIsScrolled(window.scrollY > threshold);
         };
 
@@ -26,14 +28,17 @@ const NavigationClient = ({options, menuItems}: { options: Options, menuItems: M
             <div className={`${styles.headerContent} container container--md`}>
                 <div className={styles.logoContainer}>
                     <Link href={'/'} className={styles.logo}>
-                        <Image src={options.header_logo.url} alt={options.header_logo.alt} width={50} height={50}/>
+                        <Image className={styles.logoImage} src={options.header_logo.url} alt={options.header_logo.alt} width={130} height={35} />
+                        <Image className={styles.logoImageScrolled} src={options.header_logo_scrolled.url} alt={options.header_logo_scrolled.alt} width={130} height={35} />
                     </Link>
                 </div>
                 <nav className={styles.navContainer}>
                     <ul className={styles.navList}>
                         {menuItems.map(menuItem =>
                             <li key={menuItem.ID} className={styles.navListItem}>
-                                <Link href={menuItem.url} className={styles.navListItemLink}>{menuItem.title}</Link>
+                                <Link href={menuItem.url} className={`${styles.navListItemLink}  ${pathname === menuItem.url ? styles.navActive : ''}`}>
+                                    <span className={styles.navText}>{menuItem.title}</span>
+                                </Link>
                             </li>
                         )}
                     </ul>
