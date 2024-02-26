@@ -4,6 +4,7 @@ import '@/theme-styles/global.scss';
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import Navigation from "@/components/navigation";
+import Footer from "@/components/footer";
 
 const manrope = Manrope({ subsets: ["latin", "greek"] });
 
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 />
                 <Navigation />
                 {children}
+                <Footer />
             </body>
         </html>
     );

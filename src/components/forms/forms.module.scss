@@ -1,6 +1,16 @@
-.container {
-  max-width: 700px;
-  margin: 0 auto;
+.formContainer {
+  padding: $gap-medium;
+  border-radius: $gap-x-small;
+  position: relative;
+  z-index: 2;
+  min-width: 30%;
+  background-color: #fff;
+}
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-small;
 }
 
 .searchForm {
@@ -10,4 +20,27 @@
   min-width: 760px;
   position: relative;
   z-index: 2;
+}
+
+.inputContainer {
+  position: relative;
+
+  label {
+    position: absolute;
+    font-size: $text-small;
+    top: -8px;
+    background-color: #fff;
+    font-weight: 600;
+    left: $gap-x-small;
+    padding: 0 $gap-small;
+  }
+
+  input {
+    padding: $gap-small $gap-x-small;
+    width: 100%;
+  }
+}
+
+.formTitle {
+  margin-bottom: $gap-medium;
 }

@@ -27,7 +27,7 @@ const NavigationClient = ({ options, menuItems }: { options: Options, menuItems:
         <header className={`${styles.container} ${isScrolled ? styles.headerScrolled : ''}`}>
             <div className={`${styles.headerContent} container container--md`}>
                 <div className={styles.logoContainer}>
-                    <Link href={'/'} className={styles.logo}>
+                    <Link href={'/'} className={styles.logo} aria-label='Homepage Link'>
                         <Image className={styles.logoImage} src={options.header_logo.url} alt={options.header_logo.alt} width={130} height={35} />
                         <Image className={styles.logoImageScrolled} src={options.header_logo_scrolled.url} alt={options.header_logo_scrolled.alt} width={130} height={35} />
                     </Link>

@@ -17,9 +17,13 @@ export const fetchThemeOptions = async () => {
 }
 /** Fetch Menu Items */
 export const fetchMenuItems = async (menuId: string) => {
-    const response = await wpApi.get(`/wp/v2/menu/${menuId}`);
-    return response.data;
-}
+    try {
+        const response = await wpApi.get(`/wp/v2/menu/${menuId}`);
+        return response.data;
+    } catch (error) {
+        console.error(`Failed to fetch menu items for ${menuId}:`, error);
+    }
+};
 /** Fetch Pages ACF */
 export const fetchPagesData = async (pageId: number) => {
     const response = await wpApi.get(`/wp/v2/page/${pageId}`);

@@ -5,6 +5,8 @@
   border-radius: 5px;
   border: 1px solid transparent;
   transition: all ease-in-out $duration;
+  font-weight: 600;
+  font-size: $text-medium;
 }
 
 .primary {

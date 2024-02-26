@@ -1,7 +1,6 @@
 'use client';
 
-import React, {useState, useEffect, useRef} from 'react';
-import Image from "next/image";
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './slider.module.scss';
 import ArrowLeft from "@/components/icons/ArrowLeft";
 import ArrowRight from "@/components/icons/ArrowRight";
@@ -13,22 +12,25 @@ type SliderProps = {
     showArrows?: boolean;
     showDots?: boolean;
     horizontalFade?: boolean;
+    slideGap?: number;
 };
 
 const Slider: React.FC<SliderProps> = ({
-                                           children,
-                                           slidesPerView,
-                                           autoplaySpeed = 3000,
-                                           showArrows = false,
-                                           showDots = false,
-                                           horizontalFade = false
-                                       }) => {
+    children,
+    slidesPerView,
+    autoplaySpeed = 3000,
+    showArrows = false,
+    showDots = false,
+    horizontalFade = false,
+    slideGap = 0
+}) => {
     const [current, setCurrent] = useState(0);
     const totalSlides = React.Children.count(children);
     const containerRef = useRef<HTMLDivElement>(null);
     const [isDragging, setIsDragging] = useState(false);
     const dragStart = useRef(0);
     const dragEnd = useRef(0);
+    const numberOfDots = Math.ceil(totalSlides / slidesPerView);
 
     const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
         setIsDragging(true);
@@ -88,22 +90,21 @@ const Slider: React.FC<SliderProps> = ({
     const containerShift = `-${current * slideWidth}%`;
 
     return (
-        <section className={styles.slider}>
+        <section className={styles.container}>
             {horizontalFade && <div className={styles.horizontalFade}></div>}
             {showArrows && (
                 <>
-                    <button className={styles.leftArrow} onClick={handlePrevSlide}>
-                        <ArrowLeft/>
-                    </button>
-                    <button className={styles.rightArrow} onClick={handleNextSlide}>
-                        <ArrowRight/>
-                    </button>
+                    <span className={styles.leftArrow} onClick={handlePrevSlide}>
+                        <ArrowLeft />
+                    </span>
+                    <span className={styles.rightArrow} onClick={handleNextSlide}>
+                        <ArrowRight />
+                    </span>
                 </>
             )}
             <div
                 className={styles.slidesContainer}
                 ref={containerRef}
-                style={{transform: `translateX(-${current * (100 / slidesPerView)}%)`}}
                 onTouchStart={handleDragStart}
                 onTouchMove={handleDragMove}
                 onTouchEnd={handleDragEnd}
@@ -112,20 +113,43 @@ const Slider: React.FC<SliderProps> = ({
                 onMouseUp={handleDragEnd}
                 onMouseLeave={() => isDragging && handleDragEnd()}
                 onDragStart={(e) => e.preventDefault()}
+                style={{
+                    transform: `translateX(-${current * (100 / slidesPerView)}%)`,
+                    paddingLeft: `${slideGap / 2}px`, // Dynamic left padding based on slideGap
+                    paddingRight: `${slideGap / 2}px`, // Dynamic right padding based on slideGap
+                }}
             >
                 {React.Children.map(children, (child, index) => (
-                    <div className={styles.slide} key={index} style={{width: `${slideWidth}%`}}>
+                    <div
+                        className={`${styles.slide} single-slide`}
+                        key={index}
+                        style={{
+                            width: `calc(${slideWidth}% - ${slideGap * (slidesPerView - 1) / slidesPerView}px)`,
+                            marginRight: index === totalSlides - 1 ? 0 : slideGap, // No right margin for the last slide
+                        }}
+                    >
                         {child}
                     </div>
                 ))}
             </div>
             {showDots && (
                 <div className={styles.dots}>
-                    {Array.from({length: totalSlides}).map((_, index) => (
+                    {Array.from({ length: numberOfDots }).map((_, index) => (
                         <span
                             key={index}
-                            className={`${styles.dot} ${index === current ? styles.active : ''}`}
-                            onClick={() => setCurrent(index)}
+                            className={`${styles.dot} ${(index * slidesPerView === current) ||
+                                (index === numberOfDots - 1 && current >= totalSlides - slidesPerView)
+                                ? styles.active : ''
+                                }`}
+                            onClick={() => {
+                                const targetIndex = index * slidesPerView;
+                                if (targetIndex < totalSlides - slidesPerView) {
+                                    setCurrent(targetIndex);
+                                } else {
+                                    // Handle the last group of slides
+                                    setCurrent(totalSlides - slidesPerView);
+                                }
+                            }}
                         />
                     ))}
                 </div>

@@ -1,8 +1,11 @@
 'use client';
 
-import React, {useState} from 'react';
-import {registerUser} from "@/services/user";
+import React, { useState } from 'react';
+import { registerUser } from "@/services/user";
 import styles from '../forms.module.scss';
+import Button from '@/components/common/forms/button';
+import SectionTitle from '@/components/common/typograhpy/sectionTitle';
+import Link from 'next/link';
 
 interface FormData {
     username: string;
@@ -21,12 +24,12 @@ const RegisterForm: React.FC = () => {
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({...formData, [e.target.name]: e.target.value});
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const {username, email, password, passwordRepeat} = formData;
+        const { username, email, password, passwordRepeat } = formData;
 
         // Basic client-side validation
         if (password !== passwordRepeat) {
@@ -52,16 +55,30 @@ const RegisterForm: React.FC = () => {
     };
 
     return (
-        <>
-            <form className={styles.container} onSubmit={handleSubmit}>
-                <input type="text" name="username" onChange={handleChange} placeholder="Username"/>
-                <input type="email" name="email" onChange={handleChange} placeholder="email"/>
-                <input type="password" name="password" onChange={handleChange}/>
-                <input type="password" name="passwordRepeat" onChange={handleChange}/>
-                <button type="submit">Register</button>
+        <div className={styles.formContainer}>
+            <h2 className={`${styles.formTitle} sectionSubTitle`}>Δημιουργία λογαριασμού</h2>
+            <form onSubmit={handleSubmit} className={styles.authForm}>
+                <div className={styles.inputContainer}>
+                    <label htmlFor="username">Username</label>
+                    <input type="text" id="username" name="username" autoComplete='username' onChange={handleChange} />
+                </div>
+                <div className={styles.inputContainer}>
+                    <label htmlFor="email">Email</label>
+                    <input type="email" id="email" name="email" autoComplete='email' onChange={handleChange} />
+                </div>
+                <div className={styles.inputContainer}>
+                    <label htmlFor="password">Κωδικός</label>
+                    <input type="password" id="password" name="password" onChange={handleChange} />
+                </div>
+                <div className={styles.inputContainer}>
+                    <label htmlFor="passwordRepeat">Επιβεβαίωση κωδικού</label>
+                    <input type="password" id="passwordRepeat" name="passwordRepeat" onChange={handleChange} />
+                </div>
+                <Button type="submit" variation="primary">Εγγραφή</Button>
+                <p>Έχετε ήδη λογαριασμό? Συνδεθείτε <Link href='/auth/login'>εδώ</Link></p>
             </form>
             {errorMessage && <p>{errorMessage}</p>}
-        </>
+        </div>
     );
 };
 

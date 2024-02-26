@@ -1,0 +1,61 @@
+.container {
+    background-color: $color-black;
+    padding: $gap-small 0;
+}
+
+.content {
+    display: flex;
+    gap: $gap-x-large;
+}
+
+.footerLogoContainer {
+    flex: 1;
+}
+
+.footerText {
+    max-width: 350px;
+    color: #fff;
+    font-size: $text-small;
+}
+
+.footerMenu {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-x-small;
+    list-style: none;
+}
+
+.footerMenuItem {
+    line-height: 1;
+}
+
+.footerMenuItemLink {
+    color: #fff;
+    font-size: $text-small;
+}
+
+.footerMenuTitle {
+    h5 {
+        color: #fff;
+        font-size: $text-medium;
+        font-weight: 600;
+    }
+}
+
+.copyrightsContainer {
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    margin-top: $gap-x-large;
+}
+
+.copyrights {
+    font-size: $text-x-small;
+    margin: 0 !important;
+}
+
+.version {
+    font-size: $text-x-small;
+    font-weight: 700;
+    color: $color-secondary;
+}

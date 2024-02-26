@@ -7,7 +7,7 @@
 body {
   color: $color-black;
   background-image: url(/images/bg.svg);
-  background-size: 70%;
+  background-size: 90%;
   background-position: center;
   background-repeat: repeat-y;
 }
@@ -29,10 +29,16 @@ li {
   font-size: $text-medium;
 }
 
+a {
+  color: $color-primary;
+  font-weight: 600;
+  text-decoration: none;
+}
+
 p,
 a {
   &:not(:last-child) {
-    margin: $gap-small 0;
+    margin: 0 0 $gap-small;
   }
 }
 
@@ -42,6 +48,10 @@ a {
 
   &--md {
     max-width: 1340px;
+  }
+
+  &--sm {
+    max-width: 1140px;
   }
 
   &--lg {
@@ -69,12 +79,14 @@ textarea {
 }
 
 .cta {
-  transition: all ease-in-out $duration;
+  transition: all ease-in-out $duration-fast;
   display: inline-flex;
+  max-width: fit-content;
   position: relative;
   text-decoration: none;
   color: $color-primary;
   font-weight: 600;
+  box-shadow: $shadow-none;
 
   &::before {
     content: '';
@@ -83,7 +95,7 @@ textarea {
     left: 0;
     width: 0;
     height: 2px;
-    transition: all ease-in-out $duration;
+    transition: all $animation $duration;
   }
 
   &--primary {
@@ -113,10 +125,10 @@ textarea {
   &--fill {
     background-color: $color-primary;
     color: #fff;
-    padding: $gap-x-small $gap-small;
+    padding: $gap-xxx-small $gap-small;
     border-radius: 5px;
     border: 1px solid transparent;
-    transition: all ease-in-out $duration;
+    transition: all ease-in-out $duration-fast;
 
     &.cta--primary {
       &:hover {
@@ -127,13 +139,34 @@ textarea {
     &::before {
       content: none;
     }
+
+    &.cta--secondary {
+      background-color: $color-secondary;
+
+      &:hover {
+        background-color: darken($color-secondary, $darken-amount);
+      }
+    }
+  }
+
+  &:hover {
+    box-shadow: $shadow;
   }
 }
 
 .sectionTitle {
-  font-size: $text-m-large;
+  font-size: $text-large;
+  font-weight: 700;
 }
 
 .sectionSubTitle {
-  font-size: $text-medium;
+  font-size: $text-m-large;
+  font-weight: 700;
+}
+
+.section {
+  margin: $gap-x-large auto;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-large;
 }

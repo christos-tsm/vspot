@@ -1,0 +1,65 @@
+.container {
+    display: flex;
+    box-shadow: $shadow;
+    margin-bottom: $gap-medium;
+    margin-top: -$gap-x-large;
+    position: relative;
+    z-index: 2;
+    min-height: 200px;
+}
+
+.socialTitle {
+    flex: 3;
+    background-color: $color-primary;
+    padding: $gap-medium;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h4 {
+        color: #fff;
+        font-size: $text-large;
+        font-weight: 700;
+        margin: 0 0 $gap-x-small;
+    }
+
+    p {
+        color: #fff;
+        font-size: $text-medium;
+    }
+}
+
+.socialSingle {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &>a {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.tiktok {
+    background-color: $color-black;
+}
+
+.instagram {
+    background-color: $color-secondary;
+}
+
+.facebook {
+    background-color: $color-primary-dark;
+}
+
+.texture {
+    position: absolute;
+    top: -50px;
+    right: -40px;
+    pointer-events: none;
+}

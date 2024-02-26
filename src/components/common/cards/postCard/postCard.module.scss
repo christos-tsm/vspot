@@ -1,70 +1,79 @@
-.postCard {
-  background-color: #fff;
-  border-radius: 10px;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid transparent;
-  min-height: 350px;
-
-  img {
-    transition: all ease-in-out $duration;
-    object-fit: cover;
-  }
-
-  &:hover {
-    .postCardImageContainer {
-      img {
-        transform: scale(1.05);
-      }
-
-      &::before {
-        opacity: 1;
-      }
-    }
-  }
-}
-
-.postURL {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-}
-
-.postCardImageContainer {
-  overflow: hidden;
-  display: flex;
-  position: relative;
-  width: 100%;
-  height: 100%;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
+.container {
+    flex: 1;
     width: 100%;
-    height: 100%;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(0deg, rgba($color-primary, 1) 0%, rgba(122, 122, 122, 0) 50%);
-    z-index: 2;
-    pointer-events: none;
-    opacity: 0;
-    transition: all ease-in-out $duration;
-  }
+    position: relative;
+    padding: $gap-x-small;
+    border-radius: $gap-small;
+    border: 1px solid $color-light-gray;
+    background-color: #fff;
+
+    &>a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        z-index: 2;
+    }
+
+    &:hover {
+        .imageContainer {
+            box-shadow: $shadow;
+            transform: scale(1.01);
+        }
+    }
+
+    &:nth-child(3n + 2) {
+        .badge {
+            background-color: $color-black;
+        }
+    }
+
+    &:nth-child(3n + 3) {
+        .badge {
+            background-color: $color-primary;
+        }
+    }
+}
+
+
+.imageContainer {
+    width: 100%;
+    position: relative;
+    min-height: 200px;
+    border-radius: $gap-x-small;
+    overflow: hidden;
+    margin-bottom: $gap-small;
+    box-shadow: $shadow-none;
+    transition: all $animation $duration-fast;
+
+
+    img {
+        object-fit: cover;
+    }
 }
 
 .postCardTitle {
-  transition: all ease-in-out $duration;
-  padding: $gap-x-small;
-  position: absolute;
-  font-weight: 500;
-  z-index: 3;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  font-size: $text-medium;
-  color: #fff;
+    font-size: $text-medium;
+    font-weight: 700;
+}
+
+.postCardContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.badge {
+    font-size: $text-x-small;
+    font-weight: 700;
+    padding: $gap-xxx-small $gap-xx-small;
+    background-color: $color-secondary;
+    border-radius: $gap-x-small;
+    color: #fff;
+}
+
+.postCardExcerpt {
+    margin-top: $gap-x-small;
 }

@@ -1,12 +1,12 @@
 import styles from './button.module.scss';
-import React, { FC } from "react";
+import React, { FC, ButtonHTMLAttributes } from "react";
 
-interface Button {
+interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
     variation: 'primary' | 'secondary' | 'danger',
-    text: string
+    children: string | React.ReactNode
 }
 
-const Button: FC<Button> = ({ variation, text }) => {
+const Button: FC<IButton> = ({ variation, children, ...props }) => {
     const variationClass = {
         primary: styles.primary,
         secondary: styles.secondary,
@@ -14,8 +14,8 @@ const Button: FC<Button> = ({ variation, text }) => {
     }[variation];
 
     return (
-        <button className={`${styles.btn} ${variationClass}`}>
-            {text}
+        <button className={`${styles.btn} ${variationClass}`} {...props}>
+            {children}
         </button>
     );
 };

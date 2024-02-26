@@ -1,41 +1,40 @@
-
-.slider {
+.container {
   overflow: hidden;
   position: relative;
   user-select: none; // Prevent text selection
   -webkit-user-drag: none; // Prevent element dragging
   padding: 0 0 $gap-x-small;
+}
 
-  .slidesContainer {
-    display: flex;
-    transition: transform 0.5s ease-out;
-  }
+.slidesContainer {
+  display: flex;
+  transition: transform $animation $duration;
+}
 
-  .slide {
-    flex-shrink: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.slide {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .dots {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
+.dots {
+  display: flex;
+  justify-content: flex-start;
+  margin: $gap-small;
 
-    .dot {
-      cursor: pointer;
-      height: 10px;
-      width: 10px;
-      margin: 0 5px;
-      background-color: #bbb;
-      border-radius: 50%;
-      display: inline-block;
-      transition: background-color 0.6s ease;
+  .dot {
+    cursor: pointer;
+    height: $gap-x-small;
+    width: $gap-x-small;
+    margin: 0 5px;
+    background-color: $color-light-gray;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
 
-      &.active {
-        background-color: #717171;
-      }
+    &.active {
+      background-color: $color-primary;
     }
   }
 }
@@ -57,23 +56,24 @@
   box-shadow: $shadow;
   border-radius: 50%;
   border: 2px solid transparent;
-  transition: all ease-in-out $duration;
+  transition: all $animation $duration-fast;
 
   &:hover {
-    border-color: $color-primary;
+    background-color: $color-primary;
+    color: #fff;
   }
 
 
   svg {
     path {
-      transition: all ease-in-out 250ms;
+      transition: all $animation $duration-fast;
     }
   }
 
   &:hover {
     svg {
       path {
-        fill: $color-primary;
+        fill: #fff;
       }
     }
   }

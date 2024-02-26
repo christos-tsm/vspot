@@ -1,3 +1,5 @@
+import { IImage } from "./global";
+
 export interface ImageSizes {
     thumbnail: string;
     'thumbnail-width': number;
@@ -48,4 +50,11 @@ export interface HeaderLogo {
 export interface Options {
     header_logo: HeaderLogo;
     header_logo_scrolled: HeaderLogo;
+    footer_menu_text: string;
+    footer_social_text: string;
+    footer_social_title: string;
+    footer_social_texture: IImage;
+    facebook_url: string;
+    instagram_url: string;
+    tiktok_url: string;
 }
